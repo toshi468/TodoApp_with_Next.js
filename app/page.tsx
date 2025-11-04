@@ -7,6 +7,10 @@ export default function MainPage() {
   const [todos, setTodos] = useState<Todo[]>([]);
   useEffect(() => {
     const fetchTodos = async () => {
+    const stored = localStorage.getItem("todos");
+    if (stored) {
+      setTodos(JSON.parse(stored));
+    }else{
       try {
         const res = await fetch("/api/todos");
         if (!res.ok) {
@@ -17,17 +21,22 @@ export default function MainPage() {
       } catch (error) {
         console.error("Error fetching todos:", error);
       }
+    }
     };
     fetchTodos();
   }, []);
+
+  useEffect(()=>{
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-gradient-to-b from-purple-500 to-blue-500 p-10">
       <h2 className="flex justify-center mt-20 text-6xl">Todoリスト</h2>
       <div className="flex-1 mt-10">
         <TodoList todos={todos} setTodos={setTodos} />
       </div>
       <div className="flex justify-center mb-30 mt-10">
-        <TodoInput setTodos={setTodos} />
+        <TodoInput todos={todos} setTodos={setTodos} />
       </div>
     </div>
   );

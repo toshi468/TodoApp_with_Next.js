@@ -6,6 +6,7 @@ type Todo = {
 };
 
 type TodoInputProps = {
+  todos: Todo[];
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 };
 
