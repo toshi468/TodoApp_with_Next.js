@@ -1,9 +1,7 @@
 import { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-let todos = [
-    { id: 1, text: 'サンプルTodo1', completed: false },
-    { id: 2, text: 'サンプルTodo2', completed: true },
+let todos: Todo[] = [
 ];
 
 // GET /api/todos
