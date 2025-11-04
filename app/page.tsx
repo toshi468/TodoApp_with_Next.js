@@ -36,7 +36,7 @@ export default function MainPage() {
         <TodoList todos={todos} setTodos={setTodos} />
       </div>
       <div className="flex justify-center mb-30 mt-10">
-        <TodoInput setTodos={setTodos} />
+        <TodoInput todos={todos} setTodos={setTodos} />
       </div>
     </div>
   );

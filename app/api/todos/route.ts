@@ -11,11 +11,11 @@ export async function GET() {
 
 // POST /api/todos
 export async function POST(req: NextRequest) {
-    const { text } = await req.json();
+    const { id, text, completed } = await req.json();
     const newTodo = {
-        id: todos.length + 1,
-        text,
-        completed: false,
+        id: id + 1,
+        text: text,
+        completed: completed,
     };
     todos.push(newTodo);
     return NextResponse.json(newTodo, { status: 201 });
