@@ -3,6 +3,13 @@ import { useState } from "react";
 
 export default function TodoInput({todos, setTodos}: TodoInputProps) {
     const [text, setText] = useState<string>("");
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === "Enter") {
+            addTodo();
+        }
+    }
+
     const addTodo = async () => {
         if (!text) return;
             //Todo:もしtextがないときの処理をする
@@ -33,18 +40,21 @@ export default function TodoInput({todos, setTodos}: TodoInputProps) {
     }
 
     return (
-    <div>
+    <div className="flex">
         <input
         type="text"
         value={text}
         placeholder="Todoを入力"
+        onKeyDown={handleKeyDown}
         onChange={(e) => {setText(e.target.value)}}
-        className="border p-2 rounded mr-2" />
+        className="border p-2 rounded mr-2 h-16" />
         <button
         onClick={addTodo}
         className="
         bg-blue-500 text-white p-2 rounded
         hover:bg-blue-300
+        transition-colors duration-200
+        w-20
         ">追加</button>
     </div>
     );
