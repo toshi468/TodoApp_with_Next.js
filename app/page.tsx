@@ -30,7 +30,7 @@ export default function MainPage() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-screen flex flex-col bg-gradient-to-b from-purple-500 to-blue-500 p-10">
       <h2 className="flex justify-center mt-20 text-6xl">Todoリスト</h2>
       <div className="flex-1 mt-10">
         <TodoList todos={todos} setTodos={setTodos} />

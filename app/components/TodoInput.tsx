@@ -47,11 +47,11 @@ export default function TodoInput({todos, setTodos}: TodoInputProps) {
         placeholder="Todoを入力"
         onKeyDown={handleKeyDown}
         onChange={(e) => {setText(e.target.value)}}
-        className="border p-2 rounded mr-2 h-16" />
+        className="bg-amber-50 border p-2 rounded mr-2 h-16" />
         <button
         onClick={addTodo}
         className="
-        bg-blue-500 text-white p-2 rounded
+        bg-blue-400 text-white p-2 rounded
         hover:bg-blue-300
         transition-colors duration-200
         w-20
